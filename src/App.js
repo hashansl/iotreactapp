@@ -1,25 +1,25 @@
 import logo from './logo.svg';
-import './App.css';
+// import './App.css';
+
+import React from "react";
+// import { listSongs } from "../../graphql/queries";
+// import { useEffect, useState } from "react";
+import Amplify, { API, graphqlOperation, Auth } from "aws-amplify";
+import awsconfig from "./aws-exports";
+import { AmplifySignOut, withAuthenticator } from "@aws-amplify/ui-react";
+
+Amplify.configure(awsconfig);
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <AmplifySignOut/>
+      <h1>IoT App</h1>
+
+      
     </div>
   );
 }
 
-export default App;
+export default withAuthenticator(App);
